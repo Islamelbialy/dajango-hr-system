@@ -1,0 +1,30 @@
+{% extends 'base.html'%} 
+{% block title%}{{branche.name}}{%endblock%} 
+{%block breadcrumb%}
+<li class="breadcrumb-item"><a href="{%url 'Branches'%}">Branches</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{branche.name}}</li>
+{%endblock%} {% block content%}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Branche details</h5>
+    {% if branche.name%}
+    <h6 class="card-subtitle mb-2 text-muted">{{branche.name}}</h6>
+    <p class="card-text">{{branche.address}}</p>
+    <p class="card-text">{{branche.phone}}</p>
+    {% else %}
+    <div class="alert alert-danger" role="alert">no data exists</div>
+    {% endif%}
+  </div>
+</div>
+<!-- {% if branche.name%}
+            <table>
+                <thead>
+                    <th>department</th>
+                </thead>
+                <tbody>
+                    {%for department in branche.Departments%}
+                    <td>{{department.name}}</td>
+                    {% endfor %}
+                </tbody>
+            {% endif%} -->
+{%endblock%}

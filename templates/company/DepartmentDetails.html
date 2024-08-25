@@ -1,0 +1,23 @@
+{% extends 'base.html'%} 
+
+{% block title%}{{branche.name}}{%endblock%} 
+
+{%block breadcrumb%}
+  <li class="breadcrumb-item"><a href="{%url 'Departments'%}">Departments</a></li>
+  <li class="breadcrumb-item active" aria-current="page">{{Department.name}}</li>
+{%endblock%} 
+
+{% block content%}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Department details</h5>
+      {% if Department.name%}
+      <h6 class="card-subtitle mb-2 text-muted">{{Department.name}}</h6>
+      <p class="card-text">{{Department.address}}</p>
+      <p class="card-text">{{Department.phone}}</p>
+      {% else %}
+      <div class="alert alert-danger" role="alert">no data exists</div>
+      {% endif%}
+    </div>
+  </div>
+{%endblock%}

@@ -1,0 +1,27 @@
+{% extends 'base.html'%} 
+{% block title%}Branches{% endblock %} 
+{% block breadcrumb%}
+<li class="breadcrumb-item active" aria-current="page">Branches</li>
+{% endblock %} 
+{% block content %}
+<a href="{% url 'newBranche'%}" class="btn btn-primary">add new branche</a>
+<table class="table table-striped">
+  <thead class="table-primary">
+    <th>branch</th>
+    <th>phone</th>
+  </thead>
+  <tbody>
+    {% for Branche in Branches %}
+    <tr>
+      <td>
+        <h5 class="card-title">
+          <a href="{% url 'BrancheDetails' Branche.id%}">{{Branche.name}}</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{Branche.address}}</h6>
+      </td>
+      <td>{{Branche.phone}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{%endblock%}
