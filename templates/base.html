@@ -19,7 +19,9 @@
           <button type="submit">logout</button>
         </form> -->
         <a href="{% url 'logout' %}" class="navbar-brand">logout</a>
-        <a href="{% url 'changePassword' %}" class="navbar-brand">change Password</a>
+        <a href="{% url 'changePassword' %}" class="navbar-brand"
+          >change Password</a
+        >
         {%else%}
         <a href="{% url 'signUp' %}" class="navbar-brand">signUp</a>
         <a href="{% url 'login' %}" class="navbar-brand">login</a>
@@ -37,5 +39,4 @@
     </div>
     {% endblock %}
   </body>
-
 </html>
