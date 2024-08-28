@@ -10,20 +10,31 @@
     <h6 class="card-subtitle mb-2 text-muted">{{branche.name}}</h6>
     <p class="card-text">{{branche.address}}</p>
     <p class="card-text">{{branche.phone}}</p>
+    <p class="card-text">{{branche.phone}}</p>
     {% else %}
     <div class="alert alert-danger" role="alert">no data exists</div>
     {% endif%}
   </div>
 </div>
-<!-- {% if branche.name%}
-            <table>
-                <thead>
-                    <th>department</th>
-                </thead>
-                <tbody>
-                    {%for department in branche.Departments%}
-                    <td>{{department.name}}</td>
-                    {% endfor %}
-                </tbody>
-            {% endif%} -->
+<br/>
+<table class="table table-striped">
+  <thead class="table-primary">
+    <th>Department</th>
+  </thead>
+  <tbody>
+    {% for Department in departments %}
+    <tr>
+      <td>
+        <h5 class="card-title">
+          <a href="{% url 'DepartmentDetails' Department.id %}">{{Department.name}}</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          {{Department.description}}
+        </h6>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'newDepartmentToBranche' branche.pk %}" class="btn btn-outline-primary">add department to branche</a>
 {%endblock%}

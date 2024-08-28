@@ -13,4 +13,6 @@ class Departments(models.Model):
     name = models.CharField(max_length=50,unique=True)
     dept_branch = models.ForeignKey(Branches,related_name="Dept_Branch",on_delete=models.CASCADE)
     description = models.CharField(max_length=150,help_text="no more than 150 chars")
+    def __str__(self):
+            return self.name
 

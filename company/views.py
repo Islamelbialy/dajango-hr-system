@@ -2,8 +2,9 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse,Http404
 # Create your views here.
 from .models import Branches,Departments
-from .forms import newDepartmentForm
+from .forms import newDepartmentForm,newDepartmentToBrancheForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView
 
 def AllBranches(req):
     # print("++++++++++++++++++++++++++++")
@@ -20,8 +21,32 @@ def BranchesDetails(req,branch_id):
     # except Branches.DoesNotExist :
     #     raise Http404
     # branche = get_object_or_404(Branches,pk=branch_id)
-    branche = Branches.objects.filter(pk=branch_id).first()
-    return render(req,'company/BrancheDetails.html',{'branche':branche})
+    # branche = Branches.objects.filter(pk=branch_id).first()
+    branche = Branches.objects.get(pk=branch_id)
+    departments = Departments.objects.filter(dept_branch=branche)
+    return render(req,'company/BrancheDetails.html',{'branche':branche,'departments':departments})
+
+class newDepartmentToBranche(CreateView):
+    # model = 'Departments'
+    form_class = newDepartmentToBrancheForm
+    template_name = "company/newDepartmentsToBranhe.html"
+
+  
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        obj = form.save(commit=False)
+        obj.dept_branch_id = self.kwargs['branch_id']
+        obj.save()
+        # self.object = form.save()
+        return redirect('BrancheDetails',self.kwargs['branch_id'])
+
+
+
+
+
+
+
+
 
 @login_required(login_url='/login/',redirect_field_name="next")
 def newBranche(req):

@@ -1,10 +1,10 @@
 {% extends 'base.html'%} {% block title%}add department{%endblock%} 
 {%block breadcrumb%}
-<li class="breadcrumb-item"><a href="{%url 'Departments'%}">department</a></li>
 <li class="breadcrumb-item active" aria-current="page">new Department</li>
 {%endblock%} {% block content%}
 <form method="post" novalidate>
-  {% csrf_token %} {% include 'include/form.html'%}
+  {% csrf_token %} 
+  {% include 'include/form.html'%}
   <input type="submit" value="add" class="btn btn-success" />
 </form>
 
