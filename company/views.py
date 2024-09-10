@@ -23,7 +23,9 @@ def BranchesDetails(req,branch_id):
     # branche = get_object_or_404(Branches,pk=branch_id)
     # branche = Branches.objects.filter(pk=branch_id).first()
     branche = Branches.objects.get(pk=branch_id)
-    departments = Departments.objects.filter(dept_branch=branche)
+    # departments = Departments.objects.filter(dept_branch=branche)
+    departments = branche.Dept_Branch.all()
+    print(departments)
     return render(req,'company/BrancheDetails.html',{'branche':branche,'departments':departments})
 
 class newDepartmentToBranche(CreateView):
@@ -48,7 +50,7 @@ class newDepartmentToBranche(CreateView):
 
 
 
-@login_required(login_url='/login/',redirect_field_name="next")
+# @login_required(login_url='/login/',redirect_field_name="next")
 def newBranche(req):
     if req.method == 'POST':
         brancheName = req.POST['brancheName']

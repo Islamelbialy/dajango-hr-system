@@ -18,7 +18,9 @@
         </smal>
         {% endif%} 
     {%else%} 
-      {% render_field field class="form-control" %} 
+      {% with placeholderText="Enter " %}
+      {% render_field field class="form-control" placeholder=placeholderText|add:field.label %} 
+      {% endwith %}
       {% if field.help_text %}
       <smal>
         <p class="text-muted">{{field.help_text}}</p>

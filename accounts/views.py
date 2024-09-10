@@ -53,3 +53,4 @@ def changePassword(req):
             update_session_auth_hash(req, form.user)
             return redirect('Branches')
     return render(req,"accounts/changePassword.html",{'form':form})
+
