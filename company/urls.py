@@ -4,6 +4,7 @@ urlpatterns = [
     path('branches/', views.AllBranches,name='Branches'),
     path('branche/<int:branch_id>/', views.BranchesDetails,name='BrancheDetails'),
     path('branches/new', views.newBranche,name='newBranche'),
+    path('branches/<int:branch_id>/editBranche', views.editBranche,name='editBranche'),
     # path('branche/<int:branch_id>/newDepartment', views.addDepartmentToBranche,name='addDepartmentToBranche'),
     path('branche/<int:branch_id>/newDepartment', views.newDepartmentToBranche.as_view(),name='newDepartmentToBranche'),
     path('department/<int:Department_id>/', views.DepartmentDetails,name='DepartmentDetails'),
